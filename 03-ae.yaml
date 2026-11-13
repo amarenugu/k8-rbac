@@ -1,0 +1,19 @@
+# An example of cluster config that uses access entries for cluster access management.
+
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: roboshop-access-entries
+  region: us-east-1
+accessConfig:
+  authenticationMode: API_AND_CONFIG_MAP
+  accessEntries:
+    - principalARN: arn:aws:iam::142559108283:user/Sattal
+      type: STANDARD # optional Type
+      kubernetesGroups: # optional Kubernetes groups
+        - devops-trainees # groups can used to give permissions via RBAC
+    - principalARN: arn:aws:iam::142559108283:user/Suri
+      type: STANDARD # optional Type
+      kubernetesGroups: # optional Kubernetes groups
+        - devops-trainees # groups can used to give permissions via RBAC
